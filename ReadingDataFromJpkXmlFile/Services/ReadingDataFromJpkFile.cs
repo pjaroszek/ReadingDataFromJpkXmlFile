@@ -47,11 +47,6 @@
                 Console.WriteLine(nip);
                 Console.WriteLine(email);
 
-
-                //  GetDetailInSection(xmlDocument, namespaceManager, "//tns:JPK//tns:SprzedazWiersz", "tns:NrKontrahenta");
-                //   GetDetailInSection(xmlDocument, namespaceManager, "//tns:JPK//tns:ZakupWiersz", "tns:NrDostawcy");
-
-
                 XmlNodeList nodes = xmlDocument.SelectNodes("//tns:JPK//tns:SprzedazWiersz", namespaceManager);
 
                 if (nodes != null)
@@ -62,25 +57,22 @@
                         var nrKontrahenta = node.SelectSingleNode("tns:NrKontrahenta", namespaceManager).ToText();
                         var nazwaKontrahenta = node.SelectSingleNode("tns:NazwaKontrahenta", namespaceManager).ToText();
 
-
                         if (!string.IsNullOrEmpty(nrKontrahenta))
                         {
                             Console.WriteLine(nrKontrahenta + " " + nazwaKontrahenta);
                         }
                     }
                 }
-
 
                 nodes = xmlDocument.SelectNodes("//tns:JPK//tns:ZakupWiersz", namespaceManager);
 
                 if (nodes != null)
                 {
-                    Console.WriteLine("Sales");
+                    Console.WriteLine("Purchase");
                     foreach (XmlNode node in nodes)
                     {
                         var nrKontrahenta = node.SelectSingleNode("tns:NrDostawcy", namespaceManager).ToText();
                         var nazwaKontrahenta = node.SelectSingleNode("tns:NazwaDostawcy", namespaceManager).ToText();
-
 
                         if (!string.IsNullOrEmpty(nrKontrahenta))
                         {
@@ -89,30 +81,8 @@
                     }
                 }
 
-
-
-
             }
         }
 
-        private void GetDetailInSection(XmlDocument xmlDocument, XmlNamespaceManager namespaceManager, string nodesPatch, string xPatch)
-        {
-            XmlNodeList nodes = xmlDocument.SelectNodes(nodesPatch, namespaceManager);
-
-            if (nodes != null)
-            {
-                Console.WriteLine(nodesPatch);
-                foreach (XmlNode node in nodes)
-                {
-                    var nrKontrahenta = node.SelectSingleNode(xPatch, namespaceManager).ToText();//?.InnerText;
-
-                    if (!string.IsNullOrEmpty(nrKontrahenta))
-                    {
-                        Console.WriteLine(nrKontrahenta);
-                    }
-                }
-            }
-
-        }
     }
 }

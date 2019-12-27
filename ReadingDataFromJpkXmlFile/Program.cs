@@ -9,7 +9,7 @@ namespace Jaroszek.Proof.Of.Concept.ReadingDataFromJpkXmlFile
         {
             ReadingDataFromJpkFile readingDataFromJpk = new ReadingDataFromJpkFile();
 
-            string file = @"C:\Users\Pawel\Desktop\JPK\JPK_VAT_20180101_20180131_f91060.xml";
+            string file = @"C:\Users\Pawel\Desktop\JPK\JPK_VAT_20190515_154739.xml";
             readingDataFromJpk.ReadFile(file);
             Console.ReadLine();
 
